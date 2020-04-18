@@ -1,2 +1,2 @@
 # OUTDATED<br>
-BlackMagic can now calculate SpeedValues!
+BlackMagic v1.5.0 can now calculate SpeedValues!
