@@ -26,9 +26,9 @@ while (SpeedAoB[2] <= 255)
 
 ;SpeedArray := ReadFiletoArray("test.txt")
 
-WriteArraytoFile("untrimmed-"SpeedFile, SpeedArray)
+;WriteArraytoFile("untrimmed-"SpeedFile, SpeedArray)
 SpeedArray := trimArray(SpeedArray,"^[1-9]\d?\d?\.0{6}=\d+") ; wirft alles weg was nicht in die RegEx passt!
-WriteArraytoFile("trimmed-"SpeedFile, SpeedArray)
+;WriteArraytoFile("trimmed-"SpeedFile, SpeedArray)
 SpeedArray := sortArray(SpeedArray) ; Array -> String (mit "$" trennen) -> String sortieren -> Array
 WriteArraytoFile(SpeedFile, SpeedArray)
 MsgBox,% SpeedArray.Length() " Ergebnisse"

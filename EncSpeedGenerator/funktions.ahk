@@ -84,18 +84,6 @@ WriteArraytoFile(file, Array) ;Index 0 = ungenutzt | Index 1 = Zeile 1 usw... | 
     fileObjekt.Close()
 }
 
-checkFloatContainsInt(Value)
-{
-	if (RegExMatch(RTrim(Value,".0"), "^\d+.\d+$",Value) != 1)
-	{
-		return TRUE
-	}
-	else
-	{
-		return FALSE
-	}
-}
-
 ExitFunktion()
 {
     gosub,ExitScript
@@ -163,10 +151,10 @@ GetAddress(PID, Base, Address, Offset)
 
 ReadMemory(MADDRESS, pid, size = 4)
 {
-	VarSetCapacity(MVALUE,4,0)
+	VarSetCapacity(MVALUE,size,0)
 	ProcessHandle := DllCall("OpenProcess", "Int", 24, "Char", 0, "UInt", pid, "UInt")
 	DllCall("ReadProcessMemory", "UInt", ProcessHandle, "Ptr", MADDRESS, "Ptr", &MVALUE, "Uint",size)
-	Loop 4
+	Loop %size%
 	result += *(&MVALUE + A_Index-1) << 8*(A_Index-1)
 	Return, result
 }

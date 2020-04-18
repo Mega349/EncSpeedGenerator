@@ -13,7 +13,7 @@ OnExit("ExitFunktion")
 
 ;File / Name / Location Vars
 global ScriptName := "EncSpeedGenerator"
-global ScriptVersion := "0.1.0"
+global ScriptVersion := "0.1.1"
 TempPointerFile = %A_Temp%\Trove_Pointer.ini
 TempVersionsFile = %A_Temp%\Versions.ini
 PointerHostFile := "https://webtrash.lima-city.de/Trove_Pointer_Host.ini"
@@ -33,9 +33,6 @@ global SpeedDEZOffsetString := "0x0+0x0+0x0+0x0+0x0+0x0+0x0"
 
 ;default Config
 PointerAutoUpdate := 1
-EnableUpdateCheck := 1
-minValue := 0
-maxValue := 300
 
 ;Internal Vars
 SpeedDEZString := []
@@ -86,34 +83,6 @@ if (PointerAutoUpdate == TRUE)
 		}
 	    FileDelete,%TempPointerFile%
 	}
-}
-
-;------------------------
-;Update check:
-;------------------------
-
-if (EnableUpdateCheck == TRUE)
-{
-	SplashTextOn,200,25,% ScriptName " v" ScriptVersion,% "Check for Update..."
-	try
-	{
-		UrlDownloadToFile, %VersionsFile%, %TempVersionsFile%
-	}
-	if FileExist(TempVersionsFile)
-	{
-		IniRead,NewScriptVersion,%TempVersionsFile%,Version,BM
-		if (NewScriptVersion != "ERROR" && NewScriptVersion != ScriptVersion)
-		{
-			SplashTextOff
-			MsgBox, 4, %ScriptName%,% "An Update is available! " ScriptVersion " -> " NewScriptVersion "`nDownload now?"
-			IfMsgBox, Yes
-			{
-				IniRead,NewScriptVersionURL,%TempVersionsFile%,URL,BM
-				run, %NewScriptVersionURL%
-			}
-		}
-	}
-	FileDelete,%TempVersionsFile%
 }
 
 ;------------------------

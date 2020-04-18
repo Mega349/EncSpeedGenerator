@@ -9,9 +9,6 @@ if !FileExist(iniFile)
 	IniWrite,1,%iniFile%,Version,ConfigVersion
 
 	IniWrite,%PointerAutoUpdate%,%iniFile%,General,PointerAutoUpdate
-	IniWrite,%EnableUpdateCheck%,%iniFile%,General,EnableUpdateCheck
-	IniWrite,%minValue%,%iniFile%,Value,minValue
-	IniWrite,%maxValue%,%iniFile%,Value,maxValue
 }
 
 ;------------------------
@@ -28,9 +25,6 @@ if FileExist(iniFile)
 	Gosub, Updateini
 
 	IniRead,PointerAutoUpdate,%iniFile%,General,PointerAutoUpdate
-	IniRead,EnableUpdateCheck,%iniFile%,General,EnableUpdateCheck
-	IniRead,minValue,%iniFile%,Value,minValue
-	IniRead,maxValue,%iniFile%,Value,maxValue
 }
 Return
 
