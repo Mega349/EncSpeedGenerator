@@ -32,7 +32,7 @@ sortArray(Array) ;Array -> String (mit "$" trennen) -> String sortieren -> Array
 ArraytoString(Array,counter = 0,delimiter = ",") ;(Array,Start-position,Delimiter)
 {
 	String := Array[counter]
-	while (counter <= Array.Length())
+	while (counter < Array.Length())
 	{
 		counter++
 		String := String delimiter Array[counter]
